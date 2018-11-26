@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <style>
+        .form {
+            margin-top: 200px;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><%=title%></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row Login-box">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <%if(user.id>0){%>
+                        <form action="/users/update" method="POST" class="form-signin" role="form">
+                            <%}else{%>
+                                <form action="/users/register" method="POST" class="form-signin" role="form">
+                            <%}%>
+                            <input type="hidden" value="<%=user.id%>" name="id"> 
+                            <!-- 通过name这个属性获取id -->
+                            <input type="text" class="form-control" name="username" placeholder="用户名" required="" autofocus="true" value="<%=user.username%>">
+                            <input style="margin-top:10px;" type="text" class="form-control" name="password" placeholder="密码" required="" value="<%=user.password%>">
+                            <input style="margin-top:10px;" type="password" class="form-control" name="re_p assword" placeholder="重复密码" required="">
+                            <button style="margin-top:10px;" class="btn btn-primary btn-block" type="submit"><%=user.id>0?'修改密码':'注册'%></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>
